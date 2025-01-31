@@ -6,7 +6,10 @@ namespace Ef_Core_Application.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public ApplicationDbContext()
+        {
+        }
+
 
         #region Connection string
         protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -21,18 +24,19 @@ namespace Ef_Core_Application.Data
         
         #region Configurations
 
-        /*protected override void OnModelCreating(ModelBuilder model)
+        protected override void OnModelCreating(ModelBuilder model)
         {
             new StudentConfig().Configure(model.Entity<Student>());
             new SessionConfig().Configure(model.Entity<Session>());
             new StudentSessionHelperConfig().Configure(model.Entity<StudentSessionHelper>());
-        }*/
+            new FeedbackConfig().Configure(model.Entity<Feedback>());
+            new StudentSessionAttendanceConfig().Configure(model.Entity<StudentSessionAttendance>());
+        }
 
         #endregion
 
 
         #region Tables
-
         public DbSet<Student> Students { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<StudentSessionHelper> Helpers { get; set; }
@@ -40,7 +44,6 @@ namespace Ef_Core_Application.Data
         
         #endregion
 
-
-
+ 
     }
 }
