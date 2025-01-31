@@ -14,11 +14,7 @@ namespace Ef_Core_Application.Configurations
                 .IsRequired()
                 .HasMaxLength(200);
 
-            // One-to-Many: A session has many students
-            builder.HasMany<Student>()
-                .WithOne(s => s.Session)
-                .HasForeignKey(s => s.SessionId)
-                .OnDelete(DeleteBehavior.Cascade);
+            
         }
     }
 }

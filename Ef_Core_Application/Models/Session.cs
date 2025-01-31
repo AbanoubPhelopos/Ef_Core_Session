@@ -5,16 +5,15 @@
         public int Id { get; set; }
         public string Topic { get; set; }
 
-        #region One-to-Many
+        #region Relationships
 
-        // One-to-Many: A session has many students
-        //public List<Student> Attendees { get; set; } = new();
+        // One-to-Many: A session can have many students attending
+        public List<StudentSessionAttendance> Attendees { get; set; } = new();
 
-        #endregion
+        // One-to-Many: A session can have many feedbacks from students
+        public List<Feedback> Feedbacks { get; set; } = new();
 
-        #region Many-to-Many
-
-        // Many-to-Many: A session has many student helpers
+        // Many-to-Many: A session can have many student helpers
         public List<StudentSessionHelper> Helpers { get; set; } = new();
 
         #endregion

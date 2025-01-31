@@ -18,15 +18,6 @@ namespace Ef_Core_Application.Configurations
             builder.Property(s => s.Level)
                 .IsRequired();
 
-            builder.HasIndex(s => s.Name)
-                .IsUnique(); 
-
-            
-            builder.HasOne(s => s.Session)
-                .WithMany()
-                .HasForeignKey(s => s.SessionId)
-                .OnDelete(DeleteBehavior.Cascade);
-
         }
     }
 }

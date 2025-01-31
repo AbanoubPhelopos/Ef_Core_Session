@@ -6,22 +6,19 @@ namespace Ef_Core_Application.Models
     public class Student
     {
         public int Id { get; set; }
-        
-        public string Name { get; set; } 
+        public string Name { get; set; }
         public int Level { get; set; }
 
-        #region One-to-Many
+        #region Relationships
 
-        // One-to-Many: A student can attend one session
-        public int SessionId { get; set; }
-        public Session Session { get; set; }
-
-        #endregion
-
-        #region Many-to-Many
+        // Many-to-Many: A student can attend many sessions
+        public List<StudentSessionAttendance> Attendees { get; set; } = new();
 
         // Many-to-Many: A student can help in multiple sessions
         public List<StudentSessionHelper> HelpedSessions { get; set; } = new();
+
+        // One-to-Many: A student can provide feedback for sessions
+        public List<Feedback> Feedbacks { get; set; } = new();
 
         #endregion
 

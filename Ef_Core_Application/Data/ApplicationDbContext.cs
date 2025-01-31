@@ -6,6 +6,7 @@ namespace Ef_Core_Application.Data
 {
     public class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         #region Connection string
         protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -32,9 +33,14 @@ namespace Ef_Core_Application.Data
 
         #region Tables
 
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Session> Sessions { get; set; }
+        public DbSet<StudentSessionHelper> Helpers { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
         
-        
-
         #endregion
+
+
+
     }
 }
